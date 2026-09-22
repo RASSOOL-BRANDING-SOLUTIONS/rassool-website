@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex">
+  <title>Redirecting…</title>
+</head>
+<body>
+  <p>Redirecting to Rassool Branding Solutions…</p>
+
+  <script>
+    const redirects = {
+      "/home": "/",
+      "/about-us": "/about.html",
+      "/about": "/about.html",
+      "/services": "/services.html",
+      "/gallery": "/gallery.html",
+      "/contact-us": "/contact.html",
+      "/contact": "/contact.html"
+    };
+
+    const path = window.location.pathname
+      .replace(/\/+$/, "")
+      .toLowerCase();
+
+    const destination = redirects[path] || "/";
+
+    window.location.replace(destination);
+  </script>
+</body>
+</html>
