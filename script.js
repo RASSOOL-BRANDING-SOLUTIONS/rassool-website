@@ -197,3 +197,36 @@ ${projectDetails}`;
         banner.remove();
     });
 })();
+// WEBSITE LOADING SCREEN
+(() => {
+    const loader = document.createElement("div");
+    loader.className = "site-loader";
+
+    loader.innerHTML = `
+        <div class="site-loader-content">
+            <div class="site-loader-logo">RBS</div>
+            <h2>RASSOOL BRANDING SOLUTIONS</h2>
+            <div class="site-loader-line">
+                <span></span>
+            </div>
+            <p>Bringing your brand to life...</p>
+        </div>
+    `;
+
+    document.body.appendChild(loader);
+
+    const hideLoader = () => {
+        loader.classList.add("site-loader-hidden");
+
+        setTimeout(() => {
+            loader.remove();
+        }, 500);
+    };
+
+    window.addEventListener("load", () => {
+        setTimeout(hideLoader, 600);
+    });
+
+    // Prevent the loading screen from remaining too long
+    setTimeout(hideLoader, 4000);
+})();
