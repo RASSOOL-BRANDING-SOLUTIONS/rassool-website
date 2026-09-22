@@ -157,3 +157,43 @@ ${projectDetails}`;
         window.open(whatsappLink, "_blank");
     });
 })();
+// COOKIE CONSENT BANNER
+(() => {
+    const consentKey = "rassool-cookie-consent";
+
+    if (localStorage.getItem(consentKey)) return;
+
+    const banner = document.createElement("section");
+    banner.className = "cookie-banner";
+    banner.setAttribute("role", "dialog");
+    banner.setAttribute("aria-label", "Cookie preferences");
+
+    banner.innerHTML = `
+        <div class="cookie-banner-content">
+            <div>
+                <h2>We value your privacy</h2>
+                <p>
+                    We use essential cookies to remember your preferences
+                    and help our website work properly.
+                </p>
+            </div>
+
+            <div class="cookie-banner-buttons">
+                <button id="rejectCookies" type="button">Reject</button>
+                <button id="acceptCookies" type="button">Accept</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(banner);
+
+    document.getElementById("acceptCookies").addEventListener("click", () => {
+        localStorage.setItem(consentKey, "accepted");
+        banner.remove();
+    });
+
+    document.getElementById("rejectCookies").addEventListener("click", () => {
+        localStorage.setItem(consentKey, "rejected");
+        banner.remove();
+    });
+})();
