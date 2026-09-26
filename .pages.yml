@@ -1,0 +1,62 @@
+media:
+  - name: gallery_images
+    label: Gallery photos
+    input: images/gallery
+    output: /images/gallery
+    extensions: [jpg, jpeg, png, webp]
+    rename: safe
+  - name: gallery_videos
+    label: Gallery videos
+    input: images/gallery
+    output: /images/gallery
+    extensions: [mp4]
+    rename: safe
+content:
+  - name: gallery
+    label: Gallery work
+    type: file
+    path: gallery-data.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Project title
+        type: string
+      - name: category
+        label: Gallery section
+        type: select
+        options:
+          values:
+            - label: Design & Branding
+              name: design-branding
+            - label: Print Solutions
+              name: print-solutions
+            - label: Social Media
+              name: social-media
+            - label: Apparel
+              name: apparel
+            - label: Gifts
+              name: gifts
+            - label: Vehicle Branding
+              name: vehicle-branding
+            - label: Event Stationery
+              name: event-stationery
+      - name: image
+        label: Photo (leave empty for video)
+        type: image
+        required: false
+        options:
+          media: gallery_images
+      - name: video
+        label: MP4 video (leave empty for photo)
+        type: file
+        required: false
+        options:
+          media: gallery_videos
+          extensions: [mp4]
+      - name: poster
+        label: Video cover image (optional)
+        type: image
+        required: false
+        options:
+          media: gallery_images
